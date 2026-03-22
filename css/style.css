@@ -208,26 +208,23 @@ body {
    ============================================================ */
 .hero {
     position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     text-align: center;
     overflow: hidden;
 }
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    background: url('../assets/images/hero-bg.jpg') center center / cover no-repeat;
+.hero-img-wrapper {
+    position: relative;
+    width: 100%;
     animation: heroZoomOut 15s ease-out forwards;
-    z-index: 0;
+}
+.hero-img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(253, 246, 227, 0.45);
-    z-index: 1;
+    background: rgba(253, 246, 227, 0.35);
     pointer-events: none;
 }
 
@@ -269,9 +266,13 @@ body {
 .leaf-4 { bottom: 10%; right: 3%; transform: rotate(30deg) scaleX(-1); animation: sway 6.5s ease-in-out infinite 1.5s; width: 70px; height: 70px; }
 
 .hero-content {
-    position: relative;
+    position: absolute;
     z-index: 3;
-    padding: 20px;
+    left: 50%;
+    top: 28%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
 }
 .hero-subtitle {
     font-family: var(--font-heading);
@@ -330,8 +331,9 @@ body {
 
 /* Aşağı kaydır oku */
 .scroll-arrow {
-    position: absolute;
-    bottom: 30px;
+    position: relative;
+    margin-top: -60px;
+    margin-bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     color: var(--gold);
@@ -889,10 +891,6 @@ body {
         grid-template-columns: 1fr;
         max-width: 400px;
     }
-    .hero {
-        justify-content: center;
-        padding-bottom: 15vh;
-    }
     .hero-names {
         font-size: clamp(2.5rem, 12vw, 4rem);
     }
@@ -903,13 +901,6 @@ body {
 @media (max-width: 480px) {
     :root {
         --section-padding: 50px 12px;
-    }
-    .hero {
-        padding: 0 15px;
-    }
-    .hero-content {
-        width: 100%;
-        max-width: 100%;
     }
     .hero-names {
         font-size: clamp(2.2rem, 11vw, 3.5rem);
