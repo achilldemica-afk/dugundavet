@@ -211,6 +211,8 @@ body {
     text-align: center;
     overflow: hidden;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 .hero-img-wrapper {
     position: relative;
@@ -313,24 +315,32 @@ body {
 .hero-date p {
     font-family: var(--font-heading);
     font-size: 1.3rem;
-    color: var(--gold-dark);
+    color: #6b5a2e;
     letter-spacing: 2px;
     white-space: nowrap;
     text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6);
 }
 .date-line {
     width: 60px;
-    height: 1px;
+    height: 2px;
     background: var(--gold);
-    opacity: 0.6;
+    opacity: 1;
 }
 .hero-venue {
     font-family: var(--font-body);
     font-size: 1rem;
-    color: var(--text-medium);
+    color: #333;
     letter-spacing: 1px;
-    font-weight: 300;
+    font-weight: 400;
     text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6);
+}
+.hero-bottom {
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    text-align: center;
 }
 
 /* Aşağı kaydır oku */
