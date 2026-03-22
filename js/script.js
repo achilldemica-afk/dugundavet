@@ -56,90 +56,67 @@
     }
 
     // ====================
-    // MÜZİK OYNATICI
+    // GİRİŞ EKRANI + MÜZİK
     // ====================
-    function initMusic() {
-        const btn = document.getElementById('music-toggle');
-        const audio = document.getElementById('bg-music');
-        const iconOff = btn.querySelector('.music-off');
-        const iconOn = btn.querySelector('.music-on');
-        let isPlaying = false;
-        let hasAutoPlayed = false;
+    function initIntroAndMusic() {
+        var overlay = document.getElementById('intro-overlay');
+        var openBtn = document.getElementById('open-invite-btn');
+        var musicBtn = document.getElementById('music-toggle');
+        var audio = document.getElementById('bg-music');
+        var iconOff = musicBtn.querySelector('.music-off');
+        var iconOn = musicBtn.querySelector('.music-on');
+        var isPlaying = false;
+
+        // Müzik volümünü düşük ayarla
+        audio.volume = 0.3;
 
         function setPlayingUI() {
             isPlaying = true;
-            btn.classList.add('playing');
+            musicBtn.classList.add('playing');
             iconOff.style.display = 'none';
             iconOn.style.display = '';
         }
 
         function setPausedUI() {
             isPlaying = false;
-            btn.classList.remove('playing');
+            musicBtn.classList.remove('playing');
             iconOff.style.display = '';
             iconOn.style.display = 'none';
         }
 
-        function startMusic() {
-            var playPromise = audio.play();
-            if (playPromise !== undefined) {
-                playPromise.then(function() {
-                    setPlayingUI();
-                }).catch(function() {
-                    // Tarayıcı engelledi - sessiz kal
-                });
-            }
-        }
+        // "Davetiyeyi Aç" butonuna basınca
+        openBtn.addEventListener('click', function () {
+            // Overlay'i kapat
+            overlay.classList.add('hidden');
+
+            // Müzik butonunu göster
+            musicBtn.style.display = '';
+
+            // Müziği başlat (bu bir user gesture, tarayıcılar izin verir)
+            audio.play().then(function () {
+                setPlayingUI();
+            }).catch(function () {
+                // Engellendiyse sessiz kal
+            });
+
+            // Overlay'i DOM'dan kaldır (animasyon bittikten sonra)
+            setTimeout(function () {
+                overlay.style.display = 'none';
+            }, 900);
+        });
 
         // Müzik butonuna tıklayınca aç/kapa
-        btn.addEventListener('click', function(e) {
+        musicBtn.addEventListener('click', function (e) {
             e.stopPropagation();
             if (isPlaying) {
                 audio.pause();
                 setPausedUI();
             } else {
-                startMusic();
+                audio.play().then(function () {
+                    setPlayingUI();
+                }).catch(function () {});
             }
         });
-
-        // Kullanıcı sayfayla ilk etkileşimde müziği başlat
-        function tryAutoPlay() {
-            if (hasAutoPlayed) return;
-            hasAutoPlayed = true;
-            startMusic();
-            // Tüm dinleyicileri temizle
-            removeAutoPlayListeners();
-        }
-
-        function removeAutoPlayListeners() {
-            document.removeEventListener('click', tryAutoPlay, true);
-            document.removeEventListener('touchstart', onFirstTouch, true);
-            document.removeEventListener('scroll', onFirstScroll, true);
-        }
-
-        // Touch için özel handler - iOS'ta touch event user gesture sayılır
-        function onFirstTouch() {
-            tryAutoPlay();
-        }
-
-        // Scroll için - küçük bir gecikme ile dene
-        function onFirstScroll() {
-            if (hasAutoPlayed) return;
-            hasAutoPlayed = true;
-            // Scroll user gesture sayılmaz iOS'ta, o yüzden
-            // bir sonraki touchstart/click'i bekle
-            audio.play().then(function() {
-                setPlayingUI();
-                removeAutoPlayListeners();
-            }).catch(function() {
-                // Scroll yetmedi, touch/click bekle
-                hasAutoPlayed = false;
-            });
-        }
-
-        document.addEventListener('click', tryAutoPlay, true);
-        document.addEventListener('touchstart', onFirstTouch, true);
-        document.addEventListener('scroll', onFirstScroll, true);
     }
 
     // ====================
@@ -185,7 +162,7 @@
         // Outlook.com Calendar - doğrudan takvime ekle
         const outlookBtn = document.getElementById('outlook-cal-btn');
         if (outlookBtn) {
-            var outlookUrl = 'https://outlook.live.com/calendar/0/action/compose?subject=' + title + '&startdt=2026-07-11T16:30:00Z&enddt=2026-07-12T00:30:00Z&location=' + location + '&body=' + details;
+            var outlookUrl = 'https://outlook.live.com/calendar/0/deeplink/compose?subject=' + title + '&startdt=2026-07-11T19%3A30%3A00%2B03%3A00&enddt=2026-07-12T03%3A30%3A00%2B03%3A00&location=' + location + '&body=' + details + '&path=%2Fcalendar%2Faction%2Fcompose';
             outlookBtn.href = outlookUrl;
         }
     }
@@ -371,8 +348,8 @@
     // BAŞLAT
     // ====================
     document.addEventListener('DOMContentLoaded', function () {
+        initIntroAndMusic();
         initCountdown();
-        initMusic();
         initScrollAnimations();
         initCalendarButtons();
         initRSVPForm();

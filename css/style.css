@@ -60,6 +60,81 @@ body {
     transform: translateY(0);
 }
 
+/* ---- GİRİŞ EKRANI ---- */
+.intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background:
+        radial-gradient(ellipse at 50% 50%, rgba(168,213,162,0.2) 0%, transparent 60%),
+        linear-gradient(180deg, #e8f5e3 0%, #fdf6e3 60%, #f5ecd3 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+.intro-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.intro-content {
+    padding: 30px;
+}
+.intro-subtitle {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--green-medium);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+.intro-names {
+    font-family: var(--font-script);
+    font-size: clamp(3rem, 12vw, 5rem);
+    color: var(--green-dark);
+    margin-bottom: 10px;
+}
+.intro-date {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--gold-dark);
+    letter-spacing: 3px;
+    margin-bottom: 35px;
+}
+.intro-btn {
+    padding: 16px 50px;
+    font-size: 1.1rem;
+    animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* ---- TAKVİM SONRASI (RSVP success içinde) ---- */
+.calendar-after-rsvp {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid var(--green-light);
+}
+.calendar-prompt {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--green-dark);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.calendar-after-rsvp .calendar-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.calendar-after-rsvp .btn-calendar {
+    width: 100%;
+    max-width: 260px;
+    justify-content: center;
+}
+
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }

@@ -24,8 +24,18 @@
 </head>
 <body>
 
+    <!-- ===================== GİRİŞ EKRANI (Müzik başlatıcı) ===================== -->
+    <div id="intro-overlay" class="intro-overlay">
+        <div class="intro-content">
+            <p class="intro-subtitle">Düğüne Davetlisiniz</p>
+            <h1 class="intro-names">Banu & Barış</h1>
+            <p class="intro-date">11.07.2026</p>
+            <button id="open-invite-btn" class="btn btn-primary intro-btn">Davetiyeyi Aç</button>
+        </div>
+    </div>
+
     <!-- ===================== MÜZIK OYNATICI (Sabit) ===================== -->
-    <button id="music-toggle" class="music-btn" aria-label="Müziği Aç/Kapat" title="A Thousand Years - Christina Perri">
+    <button id="music-toggle" class="music-btn" aria-label="Müziği Aç/Kapat" title="A Thousand Years - Christina Perri" style="display:none">
         <span class="music-icon music-off">&#9835;</span>
         <span class="music-icon music-on" style="display:none">&#9835;</span>
         <span class="music-label">Müzik</span>
@@ -205,35 +215,6 @@
         </div>
     </section>
 
-    <!-- ===================== TAKVİME EKLE ===================== -->
-    <section id="calendar" class="calendar-section">
-        <div class="section-decoration">
-            <svg class="floral-divider" viewBox="0 0 200 30" width="200" height="30">
-                <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="#a8d5a2" fill="none" stroke-width="1.5"/>
-                <circle cx="100" cy="15" r="4" fill="#c9a84c"/>
-                <path d="M90,15 Q95,8 100,11 Q105,8 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
-                <path d="M90,15 Q95,22 100,19 Q105,22 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
-            </svg>
-        </div>
-        <h2 class="section-title fade-in">Takvimine Ekle</h2>
-        <p class="section-subtitle fade-in">Düğünümüzü kaçırmamak için takvimine ekle!</p>
-
-        <div class="calendar-buttons fade-in">
-            <a id="google-cal-btn" href="#" target="_blank" rel="noopener" class="btn btn-calendar btn-google-cal">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px">
-                    <path d="M19.5 3h-3V1.5h-1.5V3h-6V1.5H7.5V3h-3C3.675 3 3 3.675 3 4.5v15c0 .825.675 1.5 1.5 1.5h15c.825 0 1.5-.675 1.5-1.5v-15c0-.825-.675-1.5-1.5-1.5zm0 16.5h-15V9h15v10.5z"/>
-                </svg>
-                Google Calendar
-            </a>
-            <a id="outlook-cal-btn" href="#" target="_blank" rel="noopener" class="btn btn-calendar btn-apple-cal">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px">
-                    <path d="M19.5 3h-3V1.5h-1.5V3h-6V1.5H7.5V3h-3C3.675 3 3 3.675 3 4.5v15c0 .825.675 1.5 1.5 1.5h15c.825 0 1.5-.675 1.5-1.5v-15c0-.825-.675-1.5-1.5-1.5zm0 16.5h-15V9h15v10.5z"/>
-                </svg>
-                Outlook
-            </a>
-        </div>
-    </section>
-
     <!-- ===================== RSVP FORMU ===================== -->
     <section id="rsvp" class="rsvp-section">
         <div class="section-decoration">
@@ -298,6 +279,22 @@
             <h3>Teşekkürler!</h3>
             <p>Katılım bildiriminiz alınmıştır.</p>
             <p class="success-sub">Düğünümüzde görüşmek üzere!</p>
+
+            <!-- Takvime Ekle - form sonrası -->
+            <div class="calendar-after-rsvp">
+                <p class="calendar-prompt">Düğünü takvimine ekle!</p>
+                <div class="calendar-buttons">
+                    <a id="google-cal-btn" href="#" target="_blank" rel="noopener" class="btn btn-calendar">
+                        Google Calendar
+                    </a>
+                    <a href="banu-baris-dugun.ics" class="btn btn-calendar">
+                        Apple Takvim
+                    </a>
+                    <a id="outlook-cal-btn" href="#" target="_blank" rel="noopener" class="btn btn-calendar">
+                        Outlook
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
