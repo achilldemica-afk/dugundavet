@@ -212,8 +212,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding-top: 5vh;
+    justify-content: center;
     text-align: center;
     overflow: hidden;
 }
@@ -889,6 +888,10 @@ body {
     .details-grid {
         grid-template-columns: 1fr;
         max-width: 400px;
+    }
+    .hero {
+        justify-content: center;
+        padding-bottom: 15vh;
     }
     .hero-names {
         font-size: clamp(2.5rem, 12vw, 4rem);
