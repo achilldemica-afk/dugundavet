@@ -282,6 +282,7 @@ body {
     margin-bottom: 10px;
     font-weight: 400;
     font-style: italic;
+    text-shadow: 1px 1px 6px rgba(255,255,255,0.9);
 }
 .hero-names {
     font-family: var(--font-script);
@@ -310,6 +311,7 @@ body {
     color: var(--gold-dark);
     letter-spacing: 2px;
     white-space: nowrap;
+    text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6);
 }
 .date-line {
     width: 60px;
@@ -323,6 +325,7 @@ body {
     color: var(--text-medium);
     letter-spacing: 1px;
     font-weight: 300;
+    text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6);
 }
 
 /* Aşağı kaydır oku */
