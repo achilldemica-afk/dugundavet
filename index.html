@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banu & Barış - Düğün Davetiyesi</title>
+    <meta name="description" content="Banu Solak & Barış Yurtsever düğün davetiyesi - 11 Temmuz 2026">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Banu & Barış Evleniyor!">
+    <meta property="og:description" content="11 Temmuz 2026 - Saklı Deniz, Beylikdüzü">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ===================== MÜZIK OYNATICI (Sabit) ===================== -->
+    <button id="music-toggle" class="music-btn" aria-label="Müziği Aç/Kapat" title="A Thousand Years - Christina Perri">
+        <span class="music-icon music-off">&#9835;</span>
+        <span class="music-icon music-on" style="display:none">&#9835;</span>
+        <span class="music-label">Müzik</span>
+    </button>
+    <audio id="bg-music" loop preload="auto">
+        <source src="assets/music/a-thousand-years.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ===================== HERO SECTION ===================== -->
+    <section id="hero" class="hero">
+        <div class="hero-overlay"></div>
+        <!-- Dekoratif yapraklar -->
+        <div class="leaf leaf-1"></div>
+        <div class="leaf leaf-2"></div>
+        <div class="leaf leaf-3"></div>
+        <div class="leaf leaf-4"></div>
+
+        <div class="hero-content">
+            <p class="hero-subtitle fade-in">Evleniyoruz</p>
+            <h1 class="hero-names fade-in">
+                <span class="name">Banu</span>
+                <span class="ampersand">&</span>
+                <span class="name">Barış</span>
+            </h1>
+            <div class="hero-date fade-in">
+                <div class="date-line"></div>
+                <p>11 Temmuz 2026</p>
+                <div class="date-line"></div>
+            </div>
+            <p class="hero-venue fade-in">Saklı Deniz &bull; Beylikdüzü, İstanbul</p>
+        </div>
+
+        <a href="#countdown" class="scroll-arrow" aria-label="Aşağı kaydır">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path d="M15 5 L15 25 M7 17 L15 25 L23 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </section>
+
+    <!-- ===================== GERİ SAYIM ===================== -->
+    <section id="countdown" class="countdown-section">
+        <div class="section-decoration">
+            <svg class="floral-divider" viewBox="0 0 200 30" width="200" height="30">
+                <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="#a8d5a2" fill="none" stroke-width="1.5"/>
+                <circle cx="100" cy="15" r="4" fill="#c9a84c"/>
+                <path d="M90,15 Q95,8 100,11 Q105,8 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
+                <path d="M90,15 Q95,22 100,19 Q105,22 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
+            </svg>
+        </div>
+        <h2 class="section-title fade-in">Düğüne Kalan Süre</h2>
+        <div class="countdown-timer fade-in">
+            <div class="countdown-item">
+                <span id="days" class="countdown-number">---</span>
+                <span class="countdown-label">Gün</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-item">
+                <span id="hours" class="countdown-number">--</span>
+                <span class="countdown-label">Saat</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-item">
+                <span id="minutes" class="countdown-number">--</span>
+                <span class="countdown-label">Dakika</span>
+            </div>
+            <div class="countdown-separator">:</div>
+            <div class="countdown-item">
+                <span id="seconds" class="countdown-number">--</span>
+                <span class="countdown-label">Saniye</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== DÜĞÜN DETAYLARI ===================== -->
+    <section id="details" class="details-section">
+        <div class="section-decoration">
+            <svg class="floral-divider" viewBox="0 0 200 30" width="200" height="30">
+                <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="#a8d5a2" fill="none" stroke-width="1.5"/>
+                <circle cx="100" cy="15" r="4" fill="#c9a84c"/>
+                <path d="M90,15 Q95,8 100,11 Q105,8 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
+                <path d="M90,15 Q95,22 100,19 Q105,22 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
+            </svg>
+        </div>
+        <h2 class="section-title fade-in">Düğün Detayları</h2>
+
+        <div class="details-grid">
+            <!-- Tarih Kartı -->
+            <div class="detail-card fade-in">
+                <div class="detail-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                        <text x="12" y="18" text-anchor="middle" fill="#c9a84c" stroke="none" font-size="6" font-weight="bold">11</text>
+                    </svg>
+                </div>
+                <h3 class="detail-title">Tarih</h3>
+                <p class="detail-text">11 Temmuz 2026</p>
+                <p class="detail-sub">Cumartesi</p>
+            </div>
+
+            <!-- Saat Kartı -->
+            <div class="detail-card fade-in">
+                <div class="detail-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="detail-title">Saat</h3>
+                <p class="detail-text">19:30</p>
+                <p class="detail-sub">Akşam</p>
+            </div>
+
+            <!-- Mekan Kartı -->
+            <div class="detail-card fade-in">
+                <div class="detail-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <h3 class="detail-title">Mekan</h3>
+                <p class="detail-text">Saklı Deniz</p>
+                <p class="detail-sub">Sahil, Marmara Cd. No 160/A<br>34520 Beylikdüzü / İstanbul</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== KONUM / HARİTA ===================== -->
+    <section id="location" class="location-section">
+        <div class="section-decoration">
+            <svg class="floral-divider" viewBox="0 0 200 30" width="200" height="30">
+                <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="#a8d5a2" fill="none" stroke-width="1.5"/>
+                <circle cx="100" cy="15" r="4" fill="#c9a84c"/>
+                <path d="M90,15 Q95,8 100,11 Q105,8 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
+                <path d="M90,15 Q95,22 100,19 Q105,22 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
+            </svg>
+        </div>
+        <h2 class="section-title fade-in">Konum</h2>
+
+        <div class="map-container fade-in">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.7!2d28.6268!3d40.9833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b55fe1e1e1e1e1%3A0x1234567890abcdef!2sSakl%C4%B1%20Deniz!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str"
+                width="100%"
+                height="350"
+                style="border:0; border-radius: 12px;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <div class="map-buttons fade-in">
+            <a href="https://www.google.com/maps/search/Sakl%C4%B1+Deniz+Sahil+Marmara+Cd+No+160+A+Beylikd%C3%BCz%C3%BC+%C4%B0stanbul" target="_blank" rel="noopener" class="btn btn-outline">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Google Maps
+            </a>
+            <a href="https://yandex.com.tr/harita/?text=Sakl%C4%B1%20Deniz%20Sahil%20Marmara%20Cd%20No%20160%20A%20Beylikd%C3%BCz%C3%BC%20%C4%B0stanbul" target="_blank" rel="noopener" class="btn btn-outline">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Yandex Harita
+            </a>
+            <a href="https://maps.apple.com/?q=Sakl%C4%B1+Deniz+Sahil+Marmara+Cd+No+160+A+Beylikd%C3%BCz%C3%BC+%C4%B0stanbul" target="_blank" rel="noopener" class="btn btn-outline">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+                Apple Maps
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== TAKVİME EKLE ===================== -->
+    <section id="calendar" class="calendar-section">
+        <div class="section-decoration">
+            <svg class="floral-divider" viewBox="0 0 200 30" width="200" height="30">
+                <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="#a8d5a2" fill="none" stroke-width="1.5"/>
+                <circle cx="100" cy="15" r="4" fill="#c9a84c"/>
+                <path d="M90,15 Q95,8 100,11 Q105,8 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
+                <path d="M90,15 Q95,22 100,19 Q105,22 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
+            </svg>
+        </div>
+        <h2 class="section-title fade-in">Takvimine Ekle</h2>
+        <p class="section-subtitle fade-in">Düğünümüzü kaçırmamak için takvimine ekle!</p>
+
+        <div class="calendar-buttons fade-in">
+            <a id="google-cal-btn" href="#" target="_blank" rel="noopener" class="btn btn-calendar btn-google-cal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px">
+                    <path d="M19.5 3h-3V1.5h-1.5V3h-6V1.5H7.5V3h-3C3.675 3 3 3.675 3 4.5v15c0 .825.675 1.5 1.5 1.5h15c.825 0 1.5-.675 1.5-1.5v-15c0-.825-.675-1.5-1.5-1.5zm0 16.5h-15V9h15v10.5z"/>
+                </svg>
+                Google Calendar
+            </a>
+            <a id="ics-cal-btn" href="#" download="banu-baris-dugun.ics" class="btn btn-calendar btn-apple-cal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px">
+                    <path d="M19.5 3h-3V1.5h-1.5V3h-6V1.5H7.5V3h-3C3.675 3 3 3.675 3 4.5v15c0 .825.675 1.5 1.5 1.5h15c.825 0 1.5-.675 1.5-1.5v-15c0-.825-.675-1.5-1.5-1.5zm0 16.5h-15V9h15v10.5z"/>
+                </svg>
+                Apple / Outlook
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== RSVP FORMU ===================== -->
+    <section id="rsvp" class="rsvp-section">
+        <div class="section-decoration">
+            <svg class="floral-divider" viewBox="0 0 200 30" width="200" height="30">
+                <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="#a8d5a2" fill="none" stroke-width="1.5"/>
+                <circle cx="100" cy="15" r="4" fill="#c9a84c"/>
+                <path d="M90,15 Q95,8 100,11 Q105,8 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
+                <path d="M90,15 Q95,22 100,19 Q105,22 110,15" stroke="#2d5016" fill="none" stroke-width="1"/>
+            </svg>
+        </div>
+        <h2 class="section-title fade-in">Katılım Bildirimi</h2>
+        <p class="section-subtitle fade-in">Sizi aramızda görmekten mutluluk duyarız</p>
+
+        <form id="rsvp-form" class="rsvp-form fade-in" novalidate>
+            <!-- Ad Soyad -->
+            <div class="form-group">
+                <label for="fullname">Ad Soyad <span class="required">*</span></label>
+                <input type="text" id="fullname" name="fullname" required placeholder="Adınız ve Soyadınız">
+            </div>
+
+            <!-- Katılım Durumu -->
+            <div class="form-group">
+                <label>Katılım Durumu <span class="required">*</span></label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="Katılacağım" required>
+                        <span class="radio-custom"></span>
+                        <span class="radio-text">Katılacağım <span class="check-mark">&#10003;</span></span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="Katılamayacağım">
+                        <span class="radio-custom"></span>
+                        <span class="radio-text">Maalesef katılamayacağım <span class="cross-mark">&#10007;</span></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Kişi Sayısı (sadece "Katılacağım" seçildiğinde görünür) -->
+            <div class="form-group" id="guest-count-group" style="display: none;">
+                <label for="guests">Kaç kişi geleceksiniz? <span class="required">*</span></label>
+                <input type="number" id="guests" name="guests" min="1" max="20" value="1" placeholder="1">
+            </div>
+
+            <!-- Gönder Butonu -->
+            <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+                <span class="btn-text">Gönder</span>
+                <span class="btn-loading" style="display:none">
+                    <svg class="spinner" width="20" height="20" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"/>
+                    </svg>
+                    Gönderiliyor...
+                </span>
+            </button>
+
+            <!-- Durum Mesajları -->
+            <div id="form-status" class="form-status" style="display:none"></div>
+        </form>
+
+        <!-- Başarı Mesajı (form gönderildikten sonra) -->
+        <div id="success-message" class="success-message" style="display:none">
+            <div class="success-icon">&#10003;</div>
+            <h3>Teşekkürler!</h3>
+            <p>Katılım bildiriminiz alınmıştır.</p>
+            <p class="success-sub">Düğünümüzde görüşmek üzere!</p>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <div class="footer-decoration">
+            <svg class="floral-divider" viewBox="0 0 200 30" width="200" height="30">
+                <path d="M0,15 Q50,0 100,15 Q150,30 200,15" stroke="#a8d5a2" fill="none" stroke-width="1.5"/>
+                <circle cx="100" cy="15" r="4" fill="#c9a84c"/>
+            </svg>
+        </div>
+        <p class="footer-names">Banu & Barış</p>
+        <p class="footer-date">11.07.2026</p>
+        <div class="footer-heart">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#c9a84c">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+        </div>
+    </footer>
+
+    <!-- Konfeti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
