@@ -64,48 +64,82 @@
         const iconOff = btn.querySelector('.music-off');
         const iconOn = btn.querySelector('.music-on');
         let isPlaying = false;
-        let userInteracted = false;
+        let hasAutoPlayed = false;
 
-        function toggleMusic() {
+        function setPlayingUI() {
+            isPlaying = true;
+            btn.classList.add('playing');
+            iconOff.style.display = 'none';
+            iconOn.style.display = '';
+        }
+
+        function setPausedUI() {
+            isPlaying = false;
+            btn.classList.remove('playing');
+            iconOff.style.display = '';
+            iconOn.style.display = 'none';
+        }
+
+        function startMusic() {
+            var playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    setPlayingUI();
+                }).catch(function() {
+                    // Tarayıcı engelledi - sessiz kal
+                });
+            }
+        }
+
+        // Müzik butonuna tıklayınca aç/kapa
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
             if (isPlaying) {
                 audio.pause();
-                btn.classList.remove('playing');
-                iconOff.style.display = '';
-                iconOn.style.display = 'none';
+                setPausedUI();
             } else {
-                audio.play().catch(() => {});
-                btn.classList.add('playing');
-                iconOff.style.display = 'none';
-                iconOn.style.display = '';
+                startMusic();
             }
-            isPlaying = !isPlaying;
+        });
+
+        // Kullanıcı sayfayla ilk etkileşimde müziği başlat
+        function tryAutoPlay() {
+            if (hasAutoPlayed) return;
+            hasAutoPlayed = true;
+            startMusic();
+            // Tüm dinleyicileri temizle
+            removeAutoPlayListeners();
         }
 
-        btn.addEventListener('click', toggleMusic);
+        function removeAutoPlayListeners() {
+            document.removeEventListener('click', tryAutoPlay, true);
+            document.removeEventListener('touchstart', onFirstTouch, true);
+            document.removeEventListener('scroll', onFirstScroll, true);
+        }
 
-        // İlk kullanıcı etkileşiminde müziği otomatik başlat
-        function autoPlay() {
-            if (userInteracted) return;
-            userInteracted = true;
+        // Touch için özel handler - iOS'ta touch event user gesture sayılır
+        function onFirstTouch() {
+            tryAutoPlay();
+        }
 
-            audio.play().then(() => {
-                isPlaying = true;
-                btn.classList.add('playing');
-                iconOff.style.display = 'none';
-                iconOn.style.display = '';
-            }).catch(() => {
-                // Tarayıcı engelledi, kullanıcı butona basacak
+        // Scroll için - küçük bir gecikme ile dene
+        function onFirstScroll() {
+            if (hasAutoPlayed) return;
+            hasAutoPlayed = true;
+            // Scroll user gesture sayılmaz iOS'ta, o yüzden
+            // bir sonraki touchstart/click'i bekle
+            audio.play().then(function() {
+                setPlayingUI();
+                removeAutoPlayListeners();
+            }).catch(function() {
+                // Scroll yetmedi, touch/click bekle
+                hasAutoPlayed = false;
             });
-
-            // Dinleyicileri kaldır
-            document.removeEventListener('click', autoPlay);
-            document.removeEventListener('touchstart', autoPlay);
-            document.removeEventListener('scroll', autoPlay);
         }
 
-        document.addEventListener('click', autoPlay, { once: false });
-        document.addEventListener('touchstart', autoPlay, { once: false });
-        document.addEventListener('scroll', autoPlay, { once: false });
+        document.addEventListener('click', tryAutoPlay, true);
+        document.addEventListener('touchstart', onFirstTouch, true);
+        document.addEventListener('scroll', onFirstScroll, true);
     }
 
     // ====================
@@ -141,37 +175,18 @@
         const location = encodeURIComponent(CONFIG.venueName + ', ' + CONFIG.venueAddress);
         const details = encodeURIComponent('Banu Solak & Barış Yurtsever\'in düğün töreni ve yemeği.\n\nMekan: ' + CONFIG.venueName + '\nAdres: ' + CONFIG.venueAddress);
 
-        // Google Calendar
+        // Google Calendar - doğrudan takvime ekle sayfasına yönlendir
         const googleCalBtn = document.getElementById('google-cal-btn');
         if (googleCalBtn) {
-            const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDate}/${endDate}&details=${details}&location=${location}&sf=true&output=xml`;
+            const googleUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title + '&dates=' + startDate + '/' + endDate + '&details=' + details + '&location=' + location + '&sf=true&output=xml';
             googleCalBtn.href = googleUrl;
         }
 
-        // ICS dosyası (Apple Calendar / Outlook)
-        const icsBtn = document.getElementById('ics-cal-btn');
-        if (icsBtn) {
-            const icsContent = [
-                'BEGIN:VCALENDAR',
-                'VERSION:2.0',
-                'PRODID:-//Banu & Barış Düğün//TR',
-                'BEGIN:VEVENT',
-                'DTSTART:' + startDate,
-                'DTEND:' + endDate,
-                'SUMMARY:Banu & Barış Düğünü',
-                'DESCRIPTION:Banu Solak & Barış Yurtsever düğün töreni ve yemeği.',
-                'LOCATION:' + CONFIG.venueName + '\\, ' + CONFIG.venueAddress,
-                'BEGIN:VALARM',
-                'TRIGGER:-PT2H',
-                'ACTION:DISPLAY',
-                'DESCRIPTION:Düğün 2 saat sonra başlıyor!',
-                'END:VALARM',
-                'END:VEVENT',
-                'END:VCALENDAR',
-            ].join('\r\n');
-
-            const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-            icsBtn.href = URL.createObjectURL(blob);
+        // Outlook.com Calendar - doğrudan takvime ekle
+        const outlookBtn = document.getElementById('outlook-cal-btn');
+        if (outlookBtn) {
+            var outlookUrl = 'https://outlook.live.com/calendar/0/action/compose?subject=' + title + '&startdt=2026-07-11T16:30:00Z&enddt=2026-07-12T00:30:00Z&location=' + location + '&body=' + details;
+            outlookBtn.href = outlookUrl;
         }
     }
 
