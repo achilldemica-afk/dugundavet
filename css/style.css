@@ -336,7 +336,7 @@ body {
 }
 .hero-bottom {
     position: absolute;
-    bottom: 100px;
+    bottom: 180px;
     left: 0;
     right: 0;
     z-index: 3;
