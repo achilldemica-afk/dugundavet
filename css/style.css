@@ -326,16 +326,14 @@ body {
     margin: 0 auto 35px;
 }
 .families-grid {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
-    max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 500px;
     margin: 0 auto;
 }
 .family-card {
     text-align: center;
-    min-width: 180px;
 }
 .family-label {
     font-family: var(--font-body);
