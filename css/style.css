@@ -414,6 +414,13 @@ body {
 .map-container iframe {
     display: block;
 }
+.parking-note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    margin-top: 15px;
+    font-style: italic;
+}
 .map-buttons {
     display: flex;
     justify-content: center;
