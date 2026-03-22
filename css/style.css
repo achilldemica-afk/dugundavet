@@ -477,15 +477,11 @@ body {
 }
 .parking-note {
     text-align: center;
-    font-size: 0.95rem;
-    color: var(--green-dark);
-    margin: 18px auto 0;
-    font-weight: 600;
-    background: var(--green-pale);
-    padding: 10px 22px;
-    border-radius: 50px;
-    border: 1px solid var(--green-light);
-    max-width: fit-content;
+    font-size: 1.05rem;
+    color: var(--text-medium);
+    margin-top: 18px;
+    font-weight: 700;
+    font-style: italic;
 }
 .map-buttons {
     display: flex;
