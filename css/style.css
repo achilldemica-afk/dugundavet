@@ -301,6 +301,69 @@ body {
 .scroll-arrow:hover { opacity: 1; }
 
 /* ============================================================
+   AİLELER & DAVET MESAJI
+   ============================================================ */
+.families-section {
+    padding: 70px 20px 60px;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 50%),
+        var(--cream);
+}
+.invite-message {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--text-medium);
+    max-width: 500px;
+    margin: 0 auto 25px;
+    line-height: 1.8;
+}
+.invite-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--green-light);
+    margin: 0 auto 35px;
+}
+.families-grid {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.family-card {
+    text-align: center;
+    min-width: 180px;
+}
+.family-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+.family-names {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    font-weight: 400;
+    margin-bottom: 2px;
+}
+.family-surname {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--green-dark);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ============================================================
    GERİ SAYIM
    ============================================================ */
 .countdown-section {
