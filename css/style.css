@@ -210,16 +210,20 @@ body {
     position: relative;
     text-align: center;
     overflow: hidden;
+    min-height: 100vh;
 }
 .hero-img-wrapper {
     position: relative;
     width: 100%;
+    min-height: 100vh;
     animation: heroZoomOut 15s ease-out forwards;
 }
 .hero-img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center top;
 }
 .hero-overlay {
     position: absolute;
