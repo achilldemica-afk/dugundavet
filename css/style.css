@@ -135,6 +135,28 @@ body {
     justify-content: center;
 }
 
+@keyframes heroZoomOut {
+    0% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+@keyframes flyBird {
+    0%   { transform: translate(0, 0) scaleX(1); }
+    25%  { transform: translate(25vw, -8vh) scaleX(1); }
+    50%  { transform: translate(55vw, -3vh) scaleX(1); }
+    75%  { transform: translate(80vw, -10vh) scaleX(1); }
+    100% { transform: translate(110vw, -5vh) scaleX(1); }
+}
+@keyframes flyBird2 {
+    0%   { transform: translate(0, 0) scaleX(-1); }
+    25%  { transform: translate(-20vw, -6vh) scaleX(-1); }
+    50%  { transform: translate(-45vw, -2vh) scaleX(-1); }
+    75%  { transform: translate(-75vw, -9vh) scaleX(-1); }
+    100% { transform: translate(-110vw, -4vh) scaleX(-1); }
+}
+@keyframes flapWings {
+    0%, 100% { d: path("M0,5 Q5,-2 10,5 Q15,-2 20,5"); }
+    50%      { d: path("M0,5 Q5,10 10,5 Q15,10 20,5"); }
+}
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -193,20 +215,37 @@ body {
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    background:
-        radial-gradient(ellipse at 20% 50%, rgba(168,213,162,0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 50%, rgba(168,213,162,0.2) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(201,168,76,0.08) 0%, transparent 40%),
-        linear-gradient(180deg, #e8f5e3 0%, #fdf6e3 50%, #f5ecd3 100%);
+}
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('../assets/images/hero-bg.jpg') center center / cover no-repeat;
+    animation: heroZoomOut 15s ease-out forwards;
+    z-index: 0;
 }
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 5 Q35 15 30 25 Q25 15 30 5Z' fill='%23a8d5a2' opacity='0.08'/%3E%3Cpath d='M10 35 Q15 45 10 55 Q5 45 10 35Z' fill='%232d5016' opacity='0.05'/%3E%3Cpath d='M50 40 Q55 48 50 56 Q45 48 50 40Z' fill='%23a8d5a2' opacity='0.06'/%3E%3C/svg%3E")
-        repeat;
+    background: rgba(253, 246, 227, 0.45);
+    z-index: 1;
     pointer-events: none;
 }
+
+/* Uçan kuşlar */
+.bird {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+}
+.bird svg {
+    width: 20px;
+    height: 10px;
+}
+.bird-1 { top: 18%; left: -5%; animation: flyBird 12s linear infinite; }
+.bird-2 { top: 12%; left: -8%; animation: flyBird 14s linear infinite 3s; }
+.bird-3 { top: 22%; right: -5%; animation: flyBird2 13s linear infinite 5s; }
+.bird-4 { top: 15%; left: -3%; animation: flyBird 16s linear infinite 8s; }
+.bird-5 { top: 25%; right: -8%; animation: flyBird2 11s linear infinite 2s; }
 
 /* Dekoratif yapraklar */
 .leaf {
@@ -231,7 +270,7 @@ body {
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     padding: 20px;
 }
 .hero-subtitle {
@@ -250,6 +289,7 @@ body {
     color: var(--green-dark);
     line-height: 1.2;
     margin-bottom: 20px;
+    text-shadow: 1px 1px 8px rgba(255,255,255,0.8);
 }
 .hero-names .ampersand {
     display: block;
@@ -294,7 +334,7 @@ body {
     color: var(--gold);
     animation: bounce 2s infinite;
     text-decoration: none;
-    z-index: 2;
+    z-index: 3;
     opacity: 0.7;
     transition: opacity 0.3s;
 }
