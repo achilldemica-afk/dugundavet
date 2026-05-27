@@ -306,26 +306,33 @@ body {
     margin: 0 5px;
 }
 .hero-date {
-    display: flex;
+    display: inline-flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 15px;
+    background: rgba(253, 246, 227, 0.92);
+    padding: 10px 28px;
+    border-radius: 18px;
+    box-shadow: 0 3px 14px rgba(45,80,22,0.22);
+    margin-bottom: 12px;
 }
-.hero-date p {
+.hero-date-text {
     font-family: var(--font-heading);
     font-size: 1.4rem;
-    color: var(--gold-dark);
+    color: var(--green-dark);
     letter-spacing: 2px;
     white-space: nowrap;
     font-weight: 700;
-    text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.7);
+    line-height: 1.2;
 }
-.date-line {
-    width: 70px;
-    height: 2px;
-    background: var(--gold-dark);
-    opacity: 1;
+.hero-time-text {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--gold-dark);
+    letter-spacing: 2.5px;
+    font-weight: 600;
+    margin-top: 2px;
+    line-height: 1.2;
 }
 .hero-venue {
     font-family: var(--font-body);
@@ -344,7 +351,7 @@ body {
     text-align: center;
 }
 
-/* Aşağı kaydır oku */
+/* Aşağı kaydır oku (dekoratif, tıklanmaz) */
 .scroll-arrow {
     display: inline-flex;
     flex-direction: column;
@@ -354,7 +361,8 @@ body {
     color: var(--green-dark);
     text-decoration: none;
     z-index: 3;
-    transition: transform 0.3s, color 0.3s;
+    cursor: default;
+    pointer-events: none;
 }
 .scroll-arrow-text {
     font-family: var(--font-heading);
@@ -373,13 +381,6 @@ body {
 .scroll-arrow svg {
     animation: bounce 1.6s infinite;
     filter: drop-shadow(0 2px 4px rgba(45,80,22,0.3));
-}
-.scroll-arrow:hover {
-    color: var(--gold-dark);
-    transform: translateY(2px);
-}
-.scroll-arrow:hover .scroll-arrow-text {
-    color: var(--gold-dark);
 }
 
 /* ============================================================
@@ -441,6 +442,15 @@ body {
     font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
+}
+.dinner-note {
+    margin: 35px auto 0;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--gold-dark);
+    letter-spacing: 1px;
+    text-align: center;
 }
 
 /* ============================================================
