@@ -177,49 +177,25 @@
         const btnLoading = submitBtn.querySelector('.btn-loading');
         const statusDiv = document.getElementById('form-status');
         const successDiv = document.getElementById('success-message');
-        const guestCountGroup = document.getElementById('guest-count-group');
         const guestsInput = document.getElementById('guests');
-
-        // Katılım durumuna göre kişi sayısı alanını göster/gizle
-        const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
-        attendanceRadios.forEach((radio) => {
-            radio.addEventListener('change', function () {
-                if (this.value === 'Katılacağım') {
-                    guestCountGroup.style.display = 'block';
-                    guestsInput.required = true;
-                    // Yumuşak animasyon
-                    guestCountGroup.style.opacity = '0';
-                    guestCountGroup.style.transform = 'translateY(-10px)';
-                    guestCountGroup.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                    requestAnimationFrame(() => {
-                        guestCountGroup.style.opacity = '1';
-                        guestCountGroup.style.transform = 'translateY(0)';
-                    });
-                } else {
-                    guestCountGroup.style.display = 'none';
-                    guestsInput.required = false;
-                    guestsInput.value = '0';
-                }
-            });
-        });
 
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             // Doğrulama
             const fullname = document.getElementById('fullname').value.trim();
-            const attendance = form.querySelector('input[name="attendance"]:checked');
+            const guestsValue = parseInt(guestsInput.value, 10);
 
             if (!fullname) {
                 showStatus('Lütfen ad soyad giriniz.', 'error');
                 return;
             }
-            if (!attendance) {
-                showStatus('Lütfen katılım durumunuzu seçiniz.', 'error');
+            if (!guestsValue || guestsValue < 1) {
+                showStatus('Lütfen geçerli bir kişi sayısı giriniz.', 'error');
                 return;
             }
 
-            const guests = attendance.value === 'Katılacağım' ? guestsInput.value : '0';
+            const guests = guestsInput.value;
 
             // Gönderim durumu
             submitBtn.disabled = true;
@@ -229,7 +205,7 @@
 
             const formData = {
                 fullname: fullname,
-                attendance: attendance.value,
+                attendance: 'Katılacağım',
                 guests: guests,
                 timestamp: new Date().toLocaleString('tr-TR'),
             };

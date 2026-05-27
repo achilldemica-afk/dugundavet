@@ -346,16 +346,41 @@ body {
 
 /* Aşağı kaydır oku */
 .scroll-arrow {
-    display: inline-block;
-    margin-top: 10px;
-    color: var(--gold);
-    animation: bounce 2s infinite;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    color: var(--green-dark);
     text-decoration: none;
     z-index: 3;
-    opacity: 0.8;
-    transition: opacity 0.3s;
+    transition: transform 0.3s, color 0.3s;
 }
-.scroll-arrow:hover { opacity: 1; }
+.scroll-arrow-text {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    background: rgba(253, 246, 227, 0.9);
+    padding: 5px 14px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(45,80,22,0.15);
+    text-shadow: 0 0 6px rgba(255,255,255,0.9);
+    white-space: nowrap;
+}
+.scroll-arrow svg {
+    animation: bounce 1.6s infinite;
+    filter: drop-shadow(0 2px 4px rgba(45,80,22,0.3));
+}
+.scroll-arrow:hover {
+    color: var(--gold-dark);
+    transform: translateY(2px);
+}
+.scroll-arrow:hover .scroll-arrow-text {
+    color: var(--gold-dark);
+}
 
 /* ============================================================
    AİLELER & DAVET MESAJI
