@@ -15,8 +15,8 @@
 }
 
 @page {
-  /* 11 x 16 cm trim + 3 mm bleed = 116 x 166 mm */
-  size: 116mm 166mm;
+  /* 14 x 20 cm trim + 3 mm bleed = 146 x 206 mm */
+  size: 146mm 206mm;
   margin: 0;
 }
 
@@ -37,8 +37,8 @@ body {
 
 .envelope {
   position: relative;
-  width: 116mm;
-  height: 166mm;
+  width: 146mm;
+  height: 206mm;
   background: var(--paper);
   overflow: hidden;
   box-shadow: 0 6px 32px rgba(0,0,0,0.4);
@@ -68,7 +68,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 18mm 10mm;
+  padding: 22mm 14mm;
 }
 
 /* İsimler bloğu - çapraz/diagonal yerleşim, ALTIN YALDIZ */
@@ -76,7 +76,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 14mm;
+  margin-bottom: 18mm;
 }
 
 .name-first,
@@ -91,10 +91,10 @@ body {
   display: block;
   font-family: 'Pinyon Script', cursive;
   font-weight: 400;
-  font-size: 60pt;
+  font-size: 76pt;
   line-height: 1;
   align-self: flex-start;
-  padding-left: 8mm;
+  padding-left: 12mm;
   letter-spacing: 1px;
 }
 
@@ -103,20 +103,20 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 26pt;
+  font-size: 32pt;
   line-height: 1;
   align-self: center;
-  margin: 2mm 0 -1mm;
+  margin: 4mm 0 1mm;
 }
 
 .name-last {
   display: block;
   font-family: 'Pinyon Script', cursive;
   font-weight: 400;
-  font-size: 60pt;
+  font-size: 76pt;
   line-height: 1;
   align-self: flex-end;
-  padding-right: 8mm;
+  padding-right: 12mm;
   letter-spacing: 1px;
 }
 
@@ -128,17 +128,17 @@ body {
   gap: 5mm;
 }
 .date-row .line {
-  width: 18mm;
-  height: 0.3mm;
+  width: 24mm;
+  height: 0.35mm;
   background: var(--ink-soft);
 }
 .date {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  font-size: 9pt;
-  letter-spacing: 3.5px;
+  font-size: 11pt;
+  letter-spacing: 4px;
   color: var(--ink-soft);
-  text-indent: 3.5px;
+  text-indent: 4px;
   white-space: nowrap;
 }
 </style>
