@@ -6,15 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Allura&family=Pinyon+Script&family=Sacramento&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream: #fdf6e3;
+  --green-dark: #2d5016;
+  --green-medium: #4a7c2e;
+  --green-light: #a8d5a2;
   --paper: #fcfbf7;     /* Beyaza yakın bristol */
   --gold: #c9a84c;
-  --gold-mid: #b89344;
+  --gold-light: #e2cc7e;
+  --gold-dark: #a68a2e;
   --gold-deep: #8a6e1e;
-  --text-dark: #2c2c2c;
 }
 
 @page {
@@ -45,7 +47,7 @@ body {
   background: var(--paper);
   overflow: hidden;
   box-shadow: 0 6px 32px rgba(0,0,0,0.4);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 /* Ekrandaki kesim çizgisi - basılmaz */
@@ -63,7 +65,24 @@ body {
   .envelope::before { display: none; }
 }
 
-/* Merkez içerik - hafif üst-orta */
+/* İnce ikinci çerçeve - dekoratif */
+.frame {
+  position: absolute;
+  inset: 8mm;
+  border: 0.4mm solid var(--green-light);
+  opacity: 0.7;
+}
+.frame::before, .frame::after {
+  content: '';
+  position: absolute;
+  width: 14mm;
+  height: 0.4mm;
+  background: var(--paper);
+}
+.frame::before { top: -0.4mm; left: 50%; transform: translateX(-50%); }
+.frame::after  { bottom: -0.4mm; left: 50%; transform: translateX(-50%); }
+
+/* Merkez içerik */
 .content {
   position: absolute;
   inset: 0;
@@ -72,61 +91,94 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 18mm 14mm;
+  padding: 16mm 12mm;
 }
 
-/* İsimler - ALTIN YALDIZ (matbaada gold foil uygulanacak) */
+/* Üst çiçekli motif */
+.floral-top {
+  margin-bottom: 5mm;
+  opacity: 0.85;
+}
+
+/* İsimler - ALTIN YALDIZ */
 .names {
-  font-family: 'Sacramento', cursive;
+  font-family: 'Great Vibes', cursive;
   font-weight: 400;
-  font-size: 50pt;
+  font-size: 56pt;
   line-height: 1;
   white-space: nowrap;
-  color: var(--gold-mid);
+  color: var(--gold);
   background: linear-gradient(135deg,
-    #a08237 0%,
-    #c9a84c 25%,
-    #e8cf83 50%,
+    #a68a2e 0%,
+    #d9b860 25%,
+    #f0d57e 45%,
+    #e2cc7e 55%,
     #c9a84c 75%,
     #8a6e1e 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 10mm;
 }
 
-/* Tarih satırı - iki altın çizgi arasında */
-.date-row {
+/* Alt ayırıcı */
+.divider-line {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5mm;
+  gap: 3mm;
+  margin: 4mm 0 3mm;
 }
-.date-row .line {
-  width: 16mm;
-  height: 0.35mm;
-  background: var(--gold-mid);
+.divider-line::before,
+.divider-line::after {
+  content: '';
+  width: 18mm;
+  height: 0.4mm;
+  background: var(--gold);
+  opacity: 0.6;
 }
+.divider-line .diamond {
+  width: 1.8mm;
+  height: 1.8mm;
+  background: var(--gold);
+  transform: rotate(45deg);
+  opacity: 0.7;
+}
+
+/* Tarih */
 .date {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  font-size: 9.5pt;
-  letter-spacing: 4px;
-  color: var(--gold-mid);
-  text-indent: 4px; /* tracking telafisi */
-  white-space: nowrap;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 12pt;
+  letter-spacing: 7px;
+  color: var(--green-dark);
+  text-indent: 7px;
 }
 </style>
 </head>
 <body>
 <div class="envelope">
+  <div class="frame"></div>
   <div class="content">
-    <h1 class="names">Banu &amp; Barış</h1>
-    <div class="date-row">
-      <span class="line"></span>
-      <span class="date">11 TEMMUZ 2026</span>
-      <span class="line"></span>
+
+    <div class="floral-top">
+      <svg viewBox="0 0 260 32" width="110" height="13">
+        <path d="M0,16 Q65,2 130,16 Q195,30 260,16" stroke="#a8d5a2" fill="none" stroke-width="1.4"/>
+        <circle cx="130" cy="16" r="4" fill="#c9a84c"/>
+        <path d="M118,16 Q124,8 130,12 Q136,8 142,16" stroke="#2d5016" fill="none" stroke-width="1"/>
+        <path d="M118,16 Q124,24 130,20 Q136,24 142,16" stroke="#2d5016" fill="none" stroke-width="1"/>
+        <circle cx="20"  cy="16" r="1.6" fill="#c9a84c" opacity="0.7"/>
+        <circle cx="240" cy="16" r="1.6" fill="#c9a84c" opacity="0.7"/>
+      </svg>
     </div>
+
+    <h1 class="names">Banu &amp; Barış</h1>
+
+    <div class="divider-line">
+      <span class="diamond"></span>
+    </div>
+
+    <p class="date">11 . 07 . 2026</p>
+
   </div>
 </div>
 </body>
