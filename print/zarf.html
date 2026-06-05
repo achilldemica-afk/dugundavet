@@ -71,13 +71,29 @@ body {
   padding: 18mm 10mm;
 }
 
-/* İsimler bloğu - çapraz/diagonal yerleşim */
+/* İsimler bloğu - çapraz/diagonal yerleşim, ALTIN YALDIZ */
 .names {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 14mm;
-  color: var(--ink);
+}
+
+.name-first,
+.name-last,
+.name-amp {
+  /* Yaldız hissi için metallic gold gradient
+     Matbaada gerçek altın foil uygulanacak */
+  background: linear-gradient(135deg,
+    #8e6e2c 0%,
+    #c9a84c 25%,
+    #e8cf83 50%,
+    #c9a84c 75%,
+    #7d5e25 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #b89344; /* fallback */
 }
 
 .name-first {
@@ -100,7 +116,6 @@ body {
   line-height: 1;
   align-self: center;
   margin: 2mm 0 -1mm;
-  color: var(--ink-soft);
 }
 
 .name-last {
