@@ -22,8 +22,9 @@
 }
 
 @page {
-  /* 10 x 15 cm trim + 3 mm bleed = 106 x 156 mm */
-  size: 106mm 156mm;
+  /* 10 x 15 cm trim + 3 mm bleed, ust kenarda +3 mm ekstra bleed
+     (resmin kesilmemesi icin), toplam 106 x 159 mm */
+  size: 106mm 159mm;
   margin: 0;
 }
 
@@ -47,17 +48,21 @@ body {
 .card {
   position: relative;
   width: 106mm;
-  height: 156mm;
+  height: 159mm;
   background: var(--cream);
   overflow: hidden;
   box-shadow: 0 6px 32px rgba(0,0,0,0.4);
 }
 
-/* Ekrandaki kesim çizgisi - basılmaz */
+/* Ekrandaki kesim çizgisi - basılmaz
+   Ust: 6mm (3mm standart + 3mm ekstra bleed), diger kenarlar: 3mm */
 .card::before {
   content: '';
   position: absolute;
-  inset: 3mm;
+  top: 6mm;
+  bottom: 3mm;
+  left: 3mm;
+  right: 3mm;
   border: 1px dashed rgba(45,80,22,0.25);
   pointer-events: none;
   z-index: 100;
@@ -68,13 +73,13 @@ body {
   .card::before { display: none; }
 }
 
-/* HERO illüstrasyon */
+/* HERO illüstrasyon (üstte +3mm ekstra bleed dahil) */
 .hero {
   position: absolute;
   top: 0;
   left: 0;
   width: 106mm;
-  height: 62mm;
+  height: 65mm;
   background-image: url('../assets/images/hero-bg.jpg');
   background-size: 135mm auto;
   background-position: 62% 60%;
@@ -92,11 +97,11 @@ body {
     rgba(255,255,255,1) 100%);
 }
 
-/* İçerik */
+/* İçerik (üstte 9mm padding - 6mm safe zone + 3mm ekstra bleed telafisi) */
 .content {
   position: absolute;
   inset: 0;
-  padding: 6mm 6mm 6mm;
+  padding: 9mm 6mm 6mm;
   display: flex;
   flex-direction: column;
   z-index: 2;
