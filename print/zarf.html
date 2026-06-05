@@ -82,18 +82,9 @@ body {
 .name-first,
 .name-last,
 .name-amp {
-  /* Yaldız hissi için metallic gold gradient
-     Matbaada gerçek altın foil uygulanacak */
-  background: linear-gradient(135deg,
-    #8e6e2c 0%,
-    #c9a84c 25%,
-    #e8cf83 50%,
-    #c9a84c 75%,
-    #7d5e25 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #b89344; /* fallback */
+  /* Düz altın renk - matbaada gerçek altın yaldız (foil) uygulanacak.
+     Mobil PDF okuyucularda raster sorunu yaşamamak için gradient yok. */
+  color: #b89344;
 }
 
 .name-first {
