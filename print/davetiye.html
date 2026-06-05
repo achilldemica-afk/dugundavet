@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Banu & Barış — Davetiye (Matbaa)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-dark: #2d5016;
+  --green-medium: #4a7c2e;
+  --green-light: #a8d5a2;
+  --cream: #fdf6e3;
+  --cream-dark: #f5ecd3;
+  --gold: #c9a84c;
+  --gold-light: #e2cc7e;
+  --gold-dark: #a68a2e;
+  --text-dark: #2c2c2c;
+  --text-medium: #555;
+}
+
+@page {
+  /* 13 x 18 cm trim + 3 mm bleed her kenarda = 136 x 186 mm */
+  size: 136mm 186mm;
+  margin: 0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #777;
+  font-family: 'Lato', sans-serif;
+  color: var(--text-dark);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.card {
+  position: relative;
+  width: 136mm;
+  height: 186mm;
+  background: var(--cream);
+  overflow: hidden;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.4);
+}
+
+/* Ekrandaki kesim çizgisi - basılmaz */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 3mm;
+  border: 1px dashed rgba(45,80,22,0.25);
+  pointer-events: none;
+  z-index: 100;
+}
+@media print {
+  body { background: #fff; padding: 0; }
+  .card { box-shadow: none; }
+  .card::before { display: none; }
+}
+
+/* HERO illüstrasyon - tam bleed genişliğinde, üstte */
+.hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 136mm;
+  height: 78mm;
+  background-image: url('../assets/images/hero-bg.jpg');
+  background-size: 168mm auto;
+  background-position: 47% 60%;
+  background-repeat: no-repeat;
+}
+/* Alta doğru kreme geçiş */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(253,246,227,0.08) 0%,
+    rgba(253,246,227,0.25) 55%,
+    rgba(253,246,227,0.85) 88%,
+    rgba(253,246,227,1) 100%);
+}
+
+/* İçerik - safe zone (3mm bleed + 4mm safe = 7mm padding) */
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 7mm 7mm 7mm;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+/* İsimler bloğu - hero görselinin alt kısmında */
+.names-area {
+  margin-top: 50mm;
+  text-align: center;
+}
+.subtitle {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 8.5pt;
+  letter-spacing: 4.5px;
+  color: var(--green-medium);
+  text-shadow: 0 0 4px rgba(255,255,255,0.85);
+}
+.names {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 400;
+  font-size: 44pt;
+  color: var(--green-dark);
+  line-height: 1.05;
+  margin-top: 1mm;
+  text-shadow: 0 1px 4px rgba(255,255,255,0.85);
+}
+.names .amp {
+  color: var(--gold);
+  font-size: 0.68em;
+  margin: 0 0.05em;
+}
+
+/* Çiçekli ayırıcı SVG */
+.floral {
+  text-align: center;
+  margin: 2mm auto 1mm;
+  opacity: 0.85;
+}
+
+/* Davet mesajı */
+.invite-msg {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--text-medium);
+  margin: 0 6mm;
+  line-height: 1.55;
+}
+
+.divider {
+  width: 28mm;
+  height: 1px;
+  background: var(--green-light);
+  margin: 2.5mm auto;
+}
+
+/* Aileler */
+.families {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm;
+  text-align: center;
+  padding: 0 4mm;
+}
+.family-label {
+  font-family: 'Lato', sans-serif;
+  font-size: 6pt;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8mm;
+  font-weight: 400;
+}
+.family-names {
+  font-family: 'Playfair Display', serif;
+  font-size: 10pt;
+  color: var(--text-dark);
+  margin-bottom: 0.3mm;
+}
+.family-surname {
+  font-family: 'Playfair Display', serif;
+  font-size: 12pt;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--green-dark);
+  text-transform: uppercase;
+}
+
+/* Etkinlik detayları */
+.event-details {
+  text-align: center;
+  margin-top: 3mm;
+}
+.event-date {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 12.5pt;
+  color: var(--green-dark);
+  letter-spacing: 1.5px;
+}
+.event-time {
+  font-family: 'Playfair Display', serif;
+  font-size: 10pt;
+  font-weight: 600;
+  color: var(--gold-dark);
+  letter-spacing: 3px;
+  margin-top: 1mm;
+}
+.event-venue {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 11.5pt;
+  color: var(--green-dark);
+  margin-top: 3mm;
+  letter-spacing: 0.5px;
+}
+.event-address {
+  font-family: 'Lato', sans-serif;
+  font-size: 7.8pt;
+  color: var(--text-medium);
+  margin-top: 0.6mm;
+  line-height: 1.4;
+}
+.dinner-note {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 9pt;
+  color: var(--gold-dark);
+  margin-top: 2mm;
+  letter-spacing: 0.5px;
+}
+
+/* QR alanı - en altta */
+.qr-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4mm;
+  margin-top: auto;
+  padding-top: 2.5mm;
+  padding-bottom: 0;
+  border-top: 1px solid rgba(168,213,162,0.5);
+}
+.qr-area img {
+  width: 19mm;
+  height: 19mm;
+  display: block;
+}
+.qr-text {
+  text-align: left;
+  max-width: 60mm;
+}
+.qr-prompt {
+  font-family: 'Playfair Display', serif;
+  font-size: 8.5pt;
+  color: var(--text-dark);
+  line-height: 1.35;
+}
+.qr-prompt strong {
+  font-weight: 700;
+  color: var(--green-dark);
+  display: block;
+  font-size: 9pt;
+  letter-spacing: 0.5px;
+}
+.qr-prompt em {
+  font-style: italic;
+  color: var(--text-medium);
+  font-size: 7.8pt;
+}
+.qr-url {
+  font-family: 'Lato', sans-serif;
+  font-size: 7pt;
+  font-weight: 700;
+  color: var(--gold-dark);
+  letter-spacing: 0.5px;
+  margin-top: 1mm;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="hero"></div>
+  <div class="content">
+
+    <div class="names-area">
+      <p class="subtitle">EVLENİYORUZ</p>
+      <h1 class="names">Banu <span class="amp">&amp;</span> Barış</h1>
+    </div>
+
+    <div class="floral">
+      <svg viewBox="0 0 200 22" width="80" height="11">
+        <path d="M0,11 Q50,0 100,11 Q150,22 200,11" stroke="#a8d5a2" fill="none" stroke-width="1.2"/>
+        <circle cx="100" cy="11" r="3" fill="#c9a84c"/>
+        <path d="M90,11 Q95,5 100,8 Q105,5 110,11" stroke="#2d5016" fill="none" stroke-width="0.8"/>
+        <path d="M90,11 Q95,17 100,14 Q105,17 110,11" stroke="#2d5016" fill="none" stroke-width="0.8"/>
+      </svg>
+    </div>
+
+    <p class="invite-msg">&ldquo;Bu özel günümüzde sizleri de aramızda görmekten mutluluk duyarız.&rdquo;</p>
+
+    <div class="divider"></div>
+
+    <div class="families">
+      <div>
+        <p class="family-label">Gelin Ailesi</p>
+        <p class="family-names">Nurdan &amp; Hikmet</p>
+        <p class="family-surname">Solak</p>
+      </div>
+      <div>
+        <p class="family-label">Damat Ailesi</p>
+        <p class="family-names">Meral &amp; Abdullah</p>
+        <p class="family-surname">Yurtsever</p>
+      </div>
+    </div>
+
+    <div class="event-details">
+      <p class="event-date">11 Temmuz 2026 &middot; Cumartesi</p>
+      <p class="event-time">SAAT 19:30</p>
+      <p class="event-venue">Saklı Deniz</p>
+      <p class="event-address">Sahil, Marmara Cd. No 160/A<br>34520 Beylikdüzü / İstanbul</p>
+      <p class="dinner-note">Davetimiz yemeklidir.</p>
+    </div>
+
+    <div class="qr-area">
+      <img src="qr-rsvp.png" alt="Katılım formu QR kod">
+      <div class="qr-text">
+        <p class="qr-prompt"><strong>Katılım formu için</strong>QR kodu telefonunuzla okutunuz.</p>
+        <p class="qr-url">banuvebarisindugunu.com</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
