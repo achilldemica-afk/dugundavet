@@ -6,14 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italianno&family=Pinyon+Script&family=Sacramento&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --paper: #fcfbf7;     /* Beyaza yakın bristol */
-  --gold: #b89344;      /* Referansa yakın daha mat altın */
-  --gold-mid: #a87f3a;
-  --gold-deep: #7d5e25;
-  --text-dark: #3a3a3a;
+  --ink: #1c1c1c;       /* Siyaha yakın koyu */
+  --ink-soft: #3a3a3a;  /* Tarih/çizgi için biraz daha soft */
 }
 
 @page {
@@ -70,67 +68,70 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 18mm 14mm;
+  padding: 18mm 10mm;
 }
 
-/* İsimler bloğu - alt alta */
+/* İsimler bloğu - çapraz/diagonal yerleşim */
 .names {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 14mm;
+  color: var(--ink);
+}
+
+.name-first {
+  display: block;
   font-family: 'Pinyon Script', cursive;
   font-weight: 400;
-  line-height: 0.95;
-  color: var(--gold);
-  background: linear-gradient(135deg,
-    #8e6e2c 0%,
-    #b89344 30%,
-    #d9b860 50%,
-    #b89344 70%,
-    #7d5e25 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 8mm;
-}
-.name-first,
-.name-last {
-  display: block;
-  font-size: 64pt;
+  font-size: 60pt;
+  line-height: 1;
+  align-self: flex-start;
+  padding-left: 8mm;
   letter-spacing: 1px;
 }
+
 .name-amp {
   display: block;
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 400;
-  font-size: 22pt;
-  color: var(--gold);
-  background: linear-gradient(135deg, #b89344 0%, #d9b860 50%, #7d5e25 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin: 0;
-  line-height: 1.4;
+  font-size: 26pt;
+  line-height: 1;
+  align-self: center;
+  margin: 2mm 0 -1mm;
+  color: var(--ink-soft);
 }
 
-/* Tarih satırı */
+.name-last {
+  display: block;
+  font-family: 'Pinyon Script', cursive;
+  font-weight: 400;
+  font-size: 60pt;
+  line-height: 1;
+  align-self: flex-end;
+  padding-right: 8mm;
+  letter-spacing: 1px;
+}
+
+/* Tarih satırı - iki çizgi arasında */
 .date-row {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5mm;
-  margin-top: 2mm;
 }
 .date-row .line {
   width: 18mm;
   height: 0.3mm;
-  background: var(--gold-mid);
+  background: var(--ink-soft);
 }
 .date {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 9pt;
   letter-spacing: 3.5px;
-  color: var(--gold-mid);
+  color: var(--ink-soft);
   text-indent: 3.5px;
   white-space: nowrap;
 }
